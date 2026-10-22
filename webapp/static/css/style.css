@@ -1,0 +1,343 @@
+/* ============================================================
+   VN-Index AI Stock Predictor - Modern Dark Theme & Responsive
+   ============================================================ */
+
+:root {
+    --bg-dark: #090d16;
+    --card-bg: #111726;
+    --card-header-bg: #161e31;
+    --border-color: #1e293b;
+    --accent-blue: #38bdf8;
+    --accent-green: #22c55e;
+    --accent-red: #ef4444;
+    --accent-yellow: #f59e0b;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+body.dark-theme {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    padding-bottom: 70px; /* Space for mobile bottom bar */
+}
+
+@media (min-width: 992px) {
+    body.dark-theme {
+        padding-bottom: 20px;
+    }
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Navbar */
+.stock-navbar {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+}
+
+.brand-title {
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+}
+
+.badge-ai {
+    font-size: 0.65rem;
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.brand-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* Status Pill */
+.status-pill {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid var(--border-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Ticker Strip */
+.ticker-strip {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.ticker-label {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.ticker-val {
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--card-header-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 18px;
+    font-size: 0.95rem;
+}
+
+/* Prediction Hero Card */
+.prediction-hero-card {
+    background: linear-gradient(180deg, #131c2e 0%, #0d1322 100%);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.prediction-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.prediction-badge.badge-up {
+    background: rgba(34, 197, 94, 0.15);
+    border: 2px solid var(--accent-green);
+    color: #4ade80;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.25);
+}
+
+.prediction-badge.badge-down {
+    background: rgba(239, 68, 68, 0.15);
+    border: 2px solid var(--accent-red);
+    color: #f87171;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.25);
+}
+
+.action-recommendation .badge {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Prob Progress */
+.prob-progress {
+    background: #1e293b;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Metric Cards */
+.metric-card {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    margin: 4px 0;
+}
+
+.metric-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.consensus-box {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid var(--border-color);
+}
+
+/* Architecture Section */
+.math-box {
+    background: rgba(15, 23, 42, 0.9);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 8px;
+}
+
+.layer-pill {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 8px;
+    height: 100%;
+    transition: transform 0.2s;
+}
+
+.layer-pill:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+}
+
+.layer-pill.active-out {
+    border-color: var(--accent-green);
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.layer-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.layer-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.layer-shape {
+    font-size: 0.78rem;
+    color: var(--accent-yellow);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.layer-desc {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.2;
+}
+
+/* Forms */
+.form-dark {
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.form-dark:focus {
+    background-color: #162035;
+    border-color: var(--accent-blue);
+    color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(56, 189, 248, 0.2);
+}
+
+/* Mobile Bottom Navigation */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1050;
+}
+
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.7rem;
+    flex: 1;
+    height: 100%;
+}
+
+.mobile-nav-item i {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover {
+    color: var(--accent-blue);
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .prediction-badge {
+        font-size: 1.6rem;
+        padding: 10px 18px;
+    }
+    .metric-value {
+        font-size: 1rem;
+    }
+    .brand-title {
+        font-size: 1rem;
+    }
+}

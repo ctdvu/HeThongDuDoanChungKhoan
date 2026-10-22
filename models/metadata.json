@@ -1,0 +1,80 @@
+{
+  "best_model": "BiLSTM",
+  "feature_cols": [
+    "open",
+    "high",
+    "low",
+    "close",
+    "Volume",
+    "daily_return",
+    "log_return",
+    "high_low_pct",
+    "open_close_pct",
+    "sma_5",
+    "sma_10",
+    "sma_20",
+    "sma_50",
+    "ema_5",
+    "ema_10",
+    "ema_20",
+    "ema_50",
+    "price_sma20_ratio",
+    "price_ema20_ratio",
+    "ema5_ema20_ratio",
+    "rsi_14",
+    "stoch_k",
+    "stoch_d",
+    "williams_r",
+    "roc_10",
+    "roc_20",
+    "cci_20",
+    "bb_width",
+    "bb_pct",
+    "atr_14",
+    "atr_pct",
+    "hv_20",
+    "macd",
+    "macd_signal",
+    "macd_hist",
+    "macd_cross",
+    "volume_log",
+    "volume_ratio",
+    "obv",
+    "mfi_14"
+  ],
+  "lookback": 30,
+  "eval_results": {
+    "VanillaRNN": {
+      "accuracy": 0.5626398210290827,
+      "auc": 0.535783395041977,
+      "f1": 0.7189072609633357
+    },
+    "LSTM": {
+      "accuracy": 0.5447427293064877,
+      "auc": 0.5184084756695261,
+      "f1": 0.6356311548791406
+    },
+    "GRU": {
+      "accuracy": 0.5514541387024608,
+      "auc": 0.5264331388114356,
+      "f1": 0.6747769667477697
+    },
+    "BiLSTM": {
+      "accuracy": 0.5604026845637584,
+      "auc": 0.5424875439959775,
+      "f1": 0.7166546503244412
+    },
+    "DeepStackedLSTM": {
+      "accuracy": 0.5604026845637584,
+      "auc": 0.49759767995814985,
+      "f1": 0.7182795698924731
+    }
+  },
+  "training_times": {
+    "VanillaRNN": 21.72561240196228,
+    "LSTM": 66.6990339756012,
+    "GRU": 98.64619088172913,
+    "BiLSTM": 53.69404363632202,
+    "DeepStackedLSTM": 158.4316897392273
+  }
+}
