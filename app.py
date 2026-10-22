@@ -2,15 +2,23 @@
 """
 Root entrypoint for Render deployment
 """
-import sys
 import os
+import sys
+import importlib.util
 
-# Add webapp directory to path
-webapp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'webapp')
-if webapp_dir not in sys.path:
-    sys.path.insert(0, webapp_dir)
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+WEBAPP_DIR = os.path.join(ROOT_DIR, 'webapp')
 
-from app import app
+if WEBAPP_DIR not in sys.path:
+    sys.path.insert(0, WEBAPP_DIR)
+
+# Load webapp/app.py cleanly under unique module name to prevent circular import
+spec = importlib.util.spec_from_file_location("webapp_backend", os.path.join(WEBAPP_DIR, "app.py"))
+webapp_backend = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(webapp_backend)
+
+# Expose Flask instance as 'app' for Gunicorn (gunicorn app:app)
+app = webapp_backend.app
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

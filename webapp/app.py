@@ -14,11 +14,15 @@ import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
-
 # Base directories
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(BASE_DIR)
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, 'templates'),
+    static_folder=os.path.join(BASE_DIR, 'static')
+)
 
 def get_models_dir():
     if os.path.exists(os.path.join(BASE_DIR, 'models')):
